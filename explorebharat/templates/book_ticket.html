@@ -1,0 +1,315 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Ticket | Explore Bharat</title>
+
+    <link rel="stylesheet" href="{% static 'css/monuments.css' %}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="top-bar">
+
+    <p>
+        <i class="fa-solid fa-landmark"></i>
+        DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE
+    </p>
+
+</div>
+
+<header>
+
+    <div class="navdiv">
+
+        <div class="logo">
+
+            <img src="https://nma.gov.in/assets/images/emblemb2.png"
+                 alt="Logo">
+
+            <h2>Explore Bharat</h2>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="{% url 'home' %}">
+                        <i class="fa-solid fa-house"></i> Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'about' %}">
+                        <i class="fa-solid fa-circle-info"></i> About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'monuments' %}">
+                        <i class="fa-solid fa-landmark"></i> Monuments
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'gallery' %}">
+                        <i class="fa-solid fa-image"></i> Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'contact' %}">
+                        <i class="fa-solid fa-address-book"></i> Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="popular-monuments">
+
+    <div class="popular-heading">
+
+        <span>TICKET BOOKING</span>
+
+        <h2>Book Your Visit</h2>
+
+        <p>
+            Reserve your ticket for {{ monument.monument_name }}
+        </p>
+
+    </div>
+
+
+    <div class="booking-container">
+
+        <div class="booking-card">
+
+            <div class="booking-monument">
+
+                <img src="{{ monument.monument_image.url }}"
+                     alt="{{ monument.monument_name }}">
+
+                <h2>
+                    {{ monument.monument_name }}
+                </h2>
+
+                <p>
+                    📍 {{ monument.city }}, {{ monument.state }}
+                </p>
+
+            </div>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {% if error %}
+
+                    <p style="color:red; text-align:center;">
+                        {{ error }}
+                    </p>
+
+                {% endif %}
+
+
+                <div class="input-box">
+
+                    <label>Visit Date</label>
+
+                    <input
+                        type="date"
+                        name="visit_date"
+                        id="visit_date"
+                        required>
+
+                </div>
+
+
+                <div class="ticket-row">
+
+                    <div class="input-box">
+
+                        <label>
+                            Adult Tickets
+                            (₹{{ monument.adult_fee }})
+                        </label>
+
+                        <input
+                            type="number"
+                            name="adult_tickets"
+                            id="adult_tickets"
+                            min="0"
+                            value="1"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <label>
+                            Child Tickets
+                            (₹{{ monument.child_fee }})
+                        </label>
+
+                        <input
+                            type="number"
+                            name="child_tickets"
+                            id="child_tickets"
+                            min="0"
+                            value="0"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="total-box">
+
+                    <span>Total Amount</span>
+
+                    <strong id="total_amount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="featured-btn booking-btn">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    Proceed to Payment
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h2>Explore Bharat</h2>
+
+            <p>
+                Explore India's rich heritage, magnificent monuments,
+                and timeless architecture.
+            </p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact Us</h3>
+
+            <p>📍 New Delhi, India</p>
+            <p>📧 info@explorebharat.com</p>
+            <p>📞 +91 98765 43210</p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Explore Bharat | All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    const adultFee = Number("{{ monument.adult_fee|default:0 }}");
+
+    const childFee = Number("{{ monument.child_fee|default:0 }}");
+
+    const adultInput = document.getElementById("adult_tickets");
+
+    const childInput = document.getElementById("child_tickets");
+
+    const totalAmount = document.getElementById("total_amount");
+
+    function calculateTotal() {
+
+        const adults = Number(adultInput.value) || 0;
+
+        const children = Number(childInput.value) || 0;
+
+        const total =
+            (adults * adultFee) +
+            (children * childFee);
+
+        totalAmount.textContent = "₹" + total.toFixed(2);
+
+    }
+
+    adultInput.addEventListener("input", calculateTotal);
+
+    childInput.addEventListener("input", calculateTotal);
+
+    calculateTotal();
+
+</script>
+
+</body>
+
+</html>

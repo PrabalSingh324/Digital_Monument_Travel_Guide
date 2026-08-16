@@ -1,0 +1,96 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block body %}
+
+<div class="content">
+
+    <h1>Manage Bookings</h1>
+
+    <div style="overflow-x:auto; margin-top:25px;">
+
+        <table style="
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+        ">
+
+            <thead>
+                <tr style="background:#8b5e3c; color:white;">
+
+                    <th style="padding:12px;">Booking ID</th>
+                    <th style="padding:12px;">User</th>
+                    <th style="padding:12px;">Monument</th>
+                    <th style="padding:12px;">Visit Date</th>
+                    <th style="padding:12px;">Adult</th>
+                    <th style="padding:12px;">Child</th>
+                    <th style="padding:12px;">Amount</th>
+                    <th style="padding:12px;">Payment</th>
+                    <th style="padding:12px;">Status</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for booking in bookings %}
+
+                <tr style="border-bottom:1px solid #ddd;">
+
+                    <td style="padding:12px;">
+                        BK{{ booking.id }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.user.fullname }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.monument.monument_name }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.visit_date|date:"d M Y" }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.adult_tickets }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.child_tickets }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        ₹{{ booking.total_amount }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.payment_status }}
+                    </td>
+
+                    <td style="padding:12px;">
+                        {{ booking.booking_status }}
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="9"
+                        style="padding:20px; text-align:center;">
+                        No bookings found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monuments</title>
+    <link rel="stylesheet" href="{% static 'css/monuments.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-landmark"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+     <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}" class="active"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!--HERO SECTION-->
+<section class="monument-hero">
+
+    <div class="hero-overlay">
+
+        <span class="hero-tag">EXPLORE INDIA'S HERITAGE</span>
+
+        <h1>Discover India's Magnificent Monuments</h1>
+
+        <p>
+            Journey through India's iconic forts, majestic palaces,
+            ancient temples, and UNESCO World Heritage Sites.
+            Experience centuries of history, culture, and architectural brilliance.
+        </p>
+
+        <!-- <a href="{% url 'monuments' %}" class="hero-btn">
+            Explore Monuments →
+        </a> -->
+        <a href="#popular-monuments" class="hero-btn">
+        Explore Monuments →
+        </a>
+
+    </div>
+
+</section>
+    
+<!--SEARCH SECTION-->
+
+<section class="search-section">
+
+    <div class="search-heading">
+
+        <span>DISCOVER HERITAGE</span>
+
+        <h2>Find Your Monument</h2>
+
+        <p>
+            Search and explore India's iconic monuments, 
+            forts, palaces, temples and UNESCO World Heritage Sites.
+        </p>
+
+    </div>
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input type="text" placeholder="Search Monument...">
+
+    </div>
+    <div class="filter-buttons">
+
+        <button class="active">All</button>
+        <button>UNESCO</button>
+        <button>Forts</button>
+        <button>Temples</button>
+        <button>Palaces</button>
+        <button>Memorials</button>
+        <button>Museums</button>
+
+    </div>
+
+</section>
+
+<!--FEATURED MONUMENT-->
+
+<section class="featured-monument">
+
+    {% if featured_monument %}
+
+    <div class="featured-image">
+
+        <img src="{{ featured_monument.monument_image.url }}"
+             alt="{{ featured_monument.monument_name }}">
+
+    </div>
+
+    <div class="featured-content">
+
+        <span class="featured-tag">
+            ⭐ Featured Monument
+        </span>
+
+        <h2>{{ featured_monument.monument_name }}</h2>
+
+        <h4>
+            📍 {{ featured_monument.city }}, {{ featured_monument.state }}
+        </h4>
+
+        <p>
+            {{ featured_monument.short_description }}
+        </p>
+
+        <div class="featured-info">
+
+            <span>{{ featured_monument.category }}</span>
+
+            <span>⭐ Featured</span>
+
+            <span>🕒 {{ featured_monument.best_time_to_visit }}</span>
+
+        </div>
+
+        <a href="{% url 'monument_details' featured_monument.id %}"
+           class="featured-btn">
+
+            View Details →
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+<!-- POPULAR MONUMENTS -->
+
+<!-- <section class="popular-monuments"> -->
+<section class="popular-monuments" id="popular-monuments">  
+
+    <div class="popular-heading">
+
+        <span>EXPLORE MORE</span>
+
+        <h2>Popular Monuments</h2>
+
+        <p>
+            Discover India's most famous historical landmarks,
+            architectural masterpieces and UNESCO heritage sites.
+        </p>
+
+    </div>
+
+    <div class="monument-grid">
+
+    {% for i in monuments %}
+    <div class="monument-card">
+
+        <img src="{{ i.monument_image.url }}" alt="{{ i.monument_name }}">
+
+        <div class="card-content">
+
+            <h3>{{ i.monument_name }}</h3>
+
+            <p class="location">
+                📍 {{ i.city }}, {{ i.state }}
+            </p>
+
+            <div class="card-info">
+
+                <span>{{ i.category }}</span>
+
+            </div>
+
+            <p style="margin:10px 0;">
+                {{ i.short_description|truncatewords:15 }}
+            </p>
+
+            <a href="{% url 'monument_details' i.id %}" class="card-btn">
+            View Details →
+            </a>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <h2 style="text-align:center;">
+        No Monuments Available
+    </h2>
+
+    {% endfor %}
+
+</div>
+
+    
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<section class="monument-cta">
+
+    <span>START YOUR JOURNEY</span>
+
+    <h2>Explore India's Incredible Heritage</h2>
+
+    <p>
+        Discover thousands of historical monuments, UNESCO World Heritage Sites,
+        forts, palaces and temples across India.
+    </p>
+
+    <a href="#" class="cta-btn">
+        Explore All Monuments →
+    </a>
+
+</section>
+
+<!-- Footer -->
+<footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+               <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

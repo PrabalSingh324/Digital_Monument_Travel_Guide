@@ -1,0 +1,199 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block body  %}
+    
+
+
+<div class="content">
+
+    <h1>Welcome! Admin 👋</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3><i class="fa-solid fa-landmark"></i> Total Monuments</h3>
+            <h1>{{ monument_count }}</h1>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-images"></i> Gallery Images</h3>
+            <h1>{{ gallery_count }}</h1>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-envelope"></i> Contact Messages</h3>
+            <h1>{{ contact_count }}</h1>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-users"></i> Registered Users</h3>
+            <h1>{{ user_count }}</h1>
+        </div>
+
+        <div class="recent-activity">
+
+            <h2>Recent Activity</h2>
+
+            <div class="activity-grid">
+            
+                <div class="activity-card">
+                
+                    <i class="fa-solid fa-landmark"></i>
+                
+                    <h3>Latest Monument</h3>
+                
+                    <p>
+                        {% if latest_monument %}
+                            {{ latest_monument.monument_name }}
+                        {% else %}
+                            No Monument Added
+                        {% endif %}
+                    </p>
+                
+                </div>
+            
+                <div class="activity-card">
+                
+                    <i class="fa-solid fa-user"></i>
+                
+                    <h3>Latest Registered User</h3>
+                
+                    <p>
+                        {% if latest_user %}
+                            {{ latest_user.fullname }}
+                        {% else %}
+                            No User Registered
+                        {% endif %}
+                    </p>
+                
+                </div>
+            
+                <div class="activity-card">
+                
+                    <i class="fa-solid fa-envelope"></i>
+                
+                    <h3>Latest Contact Message</h3>
+                
+                    <p>
+                        {% if latest_contact %}
+                            {{ latest_contact.full_name }}
+                        {% else %}
+                            No Contact Messages
+                        {% endif %}
+                    </p>
+                
+                </div>
+            
+            </div>
+
+</div>
+
+    </div>
+
+    <div class="quick-actions">
+
+    <h2>Quick Actions</h2>
+
+    <div class="action-grid">
+
+        <a href="{% url 'add_monument' %}" class="action-btn">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Monument</span>
+        </a>
+
+        <a href="{% url 'view_monuments' %}" class="action-btn">
+            <i class="fa-solid fa-landmark"></i>
+            <span>View Monument</span>
+        </a>
+
+        <a href="{% url 'add_gallery' %}" class="action-btn">
+            <i class="fa-solid fa-images"></i>
+            <span>Add Gallery</span>
+        </a>
+
+        <a href="{% url 'view_gallery' %}" class="action-btn">
+            <i class="fa-solid fa-image"></i>
+            <span>View Gallery</span>
+        </a>
+
+        <a href="{% url 'registered_users' %}" class="action-btn">
+            <i class="fa-solid fa-users"></i>
+            <span>Registered Users</span>
+        </a>
+
+        <a href="{% url 'contact_messages' %}" class="action-btn">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact Messages</span>
+        </a>
+
+    </div>
+
+    <div class="recent-monuments">
+
+    <h2>Recent Monuments</h2>
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+
+                <th>Image</th>
+                <th>Monument</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Category</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for monument in recent_monuments %}
+
+            <tr>
+
+                <td>
+
+                    <img src="{{ monument.monument_image.url }}" width="80">
+
+                </td>
+
+                <td>{{ monument.monument_name }}</td>
+
+                <td>{{ monument.city }}</td>
+
+                <td>{{ monument.state }}</td>
+
+                <td>{{ monument.category }}</td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="5">
+
+                    No Monument Added Yet.
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+{% endblock %}

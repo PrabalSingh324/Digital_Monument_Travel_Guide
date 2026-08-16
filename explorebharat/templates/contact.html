@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-address-book"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+     <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}" ><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}" ><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}" class="active"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!--CONTACT HERO-->
+
+    <section class="contact-hero">
+
+        <div class="contact-overlay">
+
+            <span class="contact-tag">
+                GET IN TOUCH
+            </span>
+
+            <h1>Let's Connect With Explore Bharat</h1>
+
+            <p>
+                Have questions about India's heritage, travel destinations,
+                or historical monuments? We'd love to hear from you.
+            </p>
+
+
+<!-- Same page me #contact-form id ko dhundhega aur scroll karega. Dusre page par jane ke liye {% url 'contact' %} use karte hain. -->
+            <a href="#contact-form" class="contact-btn">
+                Send Message →
+            </a>
+
+        </div>
+
+    </section>
+
+    <!--CONTACT SECTION-->
+
+    <section class="contact-section" id="contact-form">
+
+        <div class="contact-container">
+
+            <!-- Left Side -->
+
+            <div class="contact-info">
+
+                <h2>Contact Information</h2>
+
+                <div class="info-box">
+                    <h3>📍 Address</h3>
+                    <p>Lucknow, Uttar Pradesh, India</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>📞 Phone</h3>
+                    <p>+91 98765 43210</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>✉️ Email</h3>
+                    <p>support@explorebharat.com</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🕒 Working Hours</h3>
+                    <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
+                </div>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="contact-form">
+
+                <h2>Send Us A Message</h2>
+
+                <form  action="{% url 'contact' %}" method="POST">
+                    {% csrf_token %}
+
+                    <input type="text" placeholder="Your Name" required name="full_name">
+
+                    <input type="email" placeholder="Your Email" required  name="email">
+
+                    <input type="text" placeholder="Subject" name="subject">
+
+                    <textarea rows="6" placeholder="Write your message..."    name="message"></textarea>
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--FAQ SECTION-->
+
+    <section class="faq-section">
+
+        <div class="faq-container">
+
+            <span class="faq-tag">FAQ</span>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <p class="faq-subtitle">
+                Find answers to the most common questions about Explore Bharat.
+            </p>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    What is Explore Bharat?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Explore Bharat is a digital platform that showcases India's
+                        historical monuments, cultural heritage, and famous tourist
+                        destinations.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Is this website free to use?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes. Anyone can explore monument information, galleries,
+                        and travel details free of cost.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    Can I suggest a new monument?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Absolutely! You can contact us through the contact form and
+                        suggest monuments or historical places to include.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    How can I contact support?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Simply use the contact form above or email us at
+                        support@explorebharat.com.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--GOOGLE MAP-->
+
+    <section class="map-section">
+
+        <div class="map-heading">
+
+            <span>LOCATION</span>
+
+            <h2>Visit Our Office</h2>
+
+            <p>
+                We are located in Lucknow, Uttar Pradesh. Feel free to visit us
+                during our working hours.
+            </p>
+
+        </div>
+
+        <div class="map-container">
+
+            <iframe
+                src="https://maps.google.com/maps?q=Lucknow,Uttar%20Pradesh&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </section>
+
+    <!--CONTACT CTA-->
+
+    <section class="gallery-cta">
+
+        <span>EXPLORE BHARAT</span>
+
+        <h2>Ready To Explore India's Heritage?</h2>
+
+        <p>
+            Discover magnificent monuments, historical landmarks,
+            and the rich cultural heritage of India with Explore Bharat.
+        </p>
+
+        <a href="{% url 'monuments' %}" class="gallery-cta-btn">
+            Explore Monuments →
+        </a>
+
+    </section>
+
+     <!-- Footer -->
+    <footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+
+    <script src="{% static 'js/contact.js' %}"></script>
+
+
+    {% if error == "no" %}
+    <script>
+        alert("Your message has been sent successfully!");
+        window.location = "{% url 'contact' %}";
+    </script>
+    {% endif %}
+
+
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Bharat About</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-circle-info"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+
+
+
+    <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}" class="active"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!--ABOUT HERO-->
+
+<section class="about-hero">
+
+    <div class="about-overlay">
+
+        <h1>About Explore Bharat</h1>
+
+        <p>
+            Preserving India's rich heritage and architectural wonders for every traveler,
+            student and history enthusiast.
+        </p>
+
+        <a href="{% url 'monuments' %}" class="about-btn">
+            Explore Monuments
+        </a>
+
+    </div>
+
+</section>
+
+<!--OUR STORY-->
+
+<section class="our-story">
+
+    <div class="story-container">
+
+        <!-- Left Image -->
+
+        <div class="story-image">
+
+            <img src="{% static 'images/about/About.avif' %}"   alt="Our Story">
+
+        </div>
+
+        <!-- Right Content -->
+
+        <div class="story-content">
+
+            <span class="story-tag">OUR STORY</span>
+
+            <h2>Our Journey Through India's Heritage</h2>
+
+            <p>
+                India is a land where every monument tells a unique story of courage,
+                culture, art, and architectural brilliance. From the breathtaking beauty
+                of the Taj Mahal to the majestic forts of Rajasthan, every heritage site
+                reflects the rich history that has shaped our nation over centuries.
+            </p>
+
+            <p>
+                <strong>Explore Bharat</strong> was created with the vision of bringing
+                these timeless treasures together on one digital platform. Whether you're
+                planning a journey, learning about Indian history, or simply exploring its
+                architectural wonders, our goal is to make every visit informative,
+                inspiring, and memorable.
+            </p>
+
+            <div class="story-features">
+
+                <div>🏛 Authentic Heritage Information</div>
+
+                <div>📍 Smart Travel Guide</div>
+
+                <div>📷 High Quality Image Gallery</div>
+
+                <div>📚 Historical Facts & Architecture</div>
+
+            </div>
+
+            <a href="{% url 'monuments' %}" class="story-btn">
+                Discover Monuments →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--MISSION  VISION  VALUES-->
+
+<section class="mvv-section">
+
+    <div class="mvv-title">
+
+        <span>OUR PURPOSE</span>
+
+        <h2>Mission, Vision & Values</h2>
+
+        <p>
+            Our commitment is to preserve India's heritage while inspiring
+            people to discover its timeless beauty.
+        </p>
+
+    </div>
+
+    <div class="mvv-container">
+
+        <!-- Mission -->
+
+        <div class="mvv-card">
+
+            <div class="icon">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+
+            <h3>Our Mission</h3>
+
+            <p>
+                To preserve and promote India's historical monuments through
+                technology, making heritage information accessible to everyone.
+            </p>
+
+        </div>
+
+        <!-- Vision -->
+
+        <div class="mvv-card">
+
+            <div class="icon">
+                <i class="fa-solid fa-eye"></i>
+            </div>
+
+            <h3>Our Vision</h3>
+
+            <p>
+                To become India's most trusted digital heritage and architecture
+                travel guide for students, tourists, and history enthusiasts.
+            </p>
+
+        </div>
+
+        <!-- Values -->
+
+        <div class="mvv-card">
+
+            <div class="icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <h3>Our Values</h3>
+
+            <p>
+                We believe in authenticity, cultural preservation,
+                innovation, education, and providing reliable travel guidance.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--WHY CHOOSE US-->
+
+<section class="why-section">
+
+    <div class="why-title">
+
+        <span>WHY CHOOSE US</span>
+
+        <h2>Why Choose Explore Bharat?</h2>
+
+        <p>
+            We make exploring India's heritage easier, smarter, and more enjoyable through
+            authentic information and a modern digital experience.
+        </p>
+
+    </div>
+
+    <div class="why-container">
+
+        <div class="why-card">
+            <i class="fa-solid fa-landmark"></i>
+            <h3>Verified Heritage</h3>
+            <p>Authentic information about India's famous monuments and historical sites.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h3>Travel Guide</h3>
+            <p>Helpful travel details to make every heritage journey convenient.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>HD Gallery</h3>
+            <p>Beautiful high-quality images showcasing India's architectural wonders.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fa-solid fa-book-open"></i>
+            <h3>Historical Facts</h3>
+            <p>Discover fascinating stories and architectural significance of monuments.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <h3>Easy Navigation</h3>
+            <p>Find monuments quickly with a clean and user-friendly interface.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <h3>Modern Experience</h3>
+            <p>Responsive design that works smoothly across desktop and mobile devices.</p>
+        </div>
+
+    </div>
+
+</section>
+<!--OUR IMPACT-->
+
+<section class="impact-section">
+
+    <div class="impact-title">
+
+        <span>OUR IMPACT</span>
+
+        <h2>Celebrating India's Heritage</h2>
+
+        <p>
+            Explore Bharat is committed to preserving India's rich cultural heritage by
+            connecting travelers, students, and history lovers with authentic monument information.
+        </p>
+
+    </div>
+
+    <div class="impact-container">
+
+        <div class="impact-card">
+            <i class="fa-solid fa-landmark"></i>
+            <h3>150+</h3>
+            <p>Heritage Sites</p>
+        </div>
+
+        <div class="impact-card">
+            <i class="fa-solid fa-users"></i>
+            <h3>50K+</h3>
+            <p>Happy Visitors</p>
+        </div>
+
+        <div class="impact-card">
+            <i class="fa-solid fa-camera"></i>
+            <h3>5000+</h3>
+            <p>HD Photos</p>
+        </div>
+
+        <div class="impact-card">
+            <i class="fa-solid fa-star"></i>
+            <h3>100%</h3>
+            <p>Authentic Information</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!--CALL TO ACTION-->
+
+<section class="cta-section">
+
+    <div class="cta-overlay">
+
+        <h2>Ready to Explore India's Timeless Heritage?</h2>
+
+        <p>
+            Discover breathtaking monuments, rich history, and unforgettable
+            travel experiences with Explore Bharat. Start your journey today.
+        </p>
+
+        <a href="{% url 'monuments' %}" class="cta-btn">
+            Explore Monuments →
+        </a>
+
+    </div>
+
+</section>
+
+ <footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+               <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

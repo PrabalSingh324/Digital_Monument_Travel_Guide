@@ -1,0 +1,71 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block body %}
+
+<div class="content">
+
+    <h1>Add Gallery Image</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="row">
+
+            <div class="input-box">
+
+                <label>Select Monument</label>
+
+                <select name="monument">
+
+                    {% for i in monuments %}
+
+                    <option value="{{ i.id }}">
+                        {{ i.monument_name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+
+                <label>Caption</label>
+
+                <input type="text" name="caption">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+
+                <label>Upload Image</label>
+
+                <input type="file" name="image">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <button type="submit" class="save-btn">
+                Save Image
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

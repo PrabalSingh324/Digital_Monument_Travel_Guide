@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Explore Bharat</title>
+
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-user-plus"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'register' %}" class="active"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- REGISTER SECTION -->
+
+    <section class="login-section">
+
+        <div class="login-container">
+
+            <!-- LEFT SIDE -->
+
+            <div class="login-left">
+
+                <span class="login-tag">
+                    JOIN EXPLORE BHARAT
+                </span>
+
+                <h1>Create Your Account</h1>
+
+                <p>
+                    Register to explore India's magnificent monuments,
+                    historical places and unforgettable travel experiences.
+                </p>
+
+                <form class="login-form" action="{% url 'register' %}" method="POST">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Full Name"
+                        required>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Username"
+                        required>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            required>
+
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                    </div>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirm_password"
+                            placeholder="Confirm Password"
+                            required>
+
+                        <i class="fa-solid fa-eye" id="toggleConfirmPassword"></i>
+
+                    </div>
+
+                    <div class="gender-box">
+
+                        <label>
+                            <input type="radio" name="gender" value="Male" required>
+                            Male
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender" value="Female">
+                            Female
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender" value="Other">
+                            Other
+                        </label>
+
+                    </div>
+
+                    <div class="terms-box">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required>
+                                I agree to the Terms & Conditions
+
+                        </label>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        name="register_btn">
+                        Register
+                    </button>
+
+                </form>
+
+                <p class="register-text">
+
+                    Already have an account?
+
+                    <a href="{% url 'login' %}">
+                        Login Now
+                    </a>
+
+                </p>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+
+            <div class="login-right">
+
+                <img src="{% static 'images/login/Gallery_her0.jpg'%}" alt="Register">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="login-footer">
+
+        <p>&copy; 2026 Explore Bharat. All Rights Reserved.</p>
+
+        <div class="footer-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <span>|</span>
+
+            <a href="#">Terms & Conditions</a>
+
+            <span>|</span>
+
+            <a href="{% url 'contact' %}">Contact</a>
+
+        </div>
+
+    </footer>
+
+
+{% if error == "no" %}
+<script>
+    alert("Registration Successful!");
+    window.location="{% url 'login' %}";
+</script>
+{% endif %}
+
+{% if error == "notmatch" %}
+<script>
+    alert("Password and Confirm Password do not match!");
+</script>
+{% endif %}
+
+{% if error == "email" %}
+<script>
+    alert("Email already exists!");
+</script>
+{% endif %}
+
+{% if error == "username" %}
+<script>
+    alert("Username already exists!");
+</script>
+{% endif %}
+
+
+
+</body>
+</html>

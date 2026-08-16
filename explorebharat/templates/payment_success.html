@@ -1,0 +1,226 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Successful | Explore Bharat</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/monuments.css' %}">
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Georgia, "Times New Roman", serif;
+            background:#f7f7f7;
+        }
+
+        .success-page{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:50px 20px;
+            box-sizing:border-box;
+        }
+
+        .success-card{
+            width:100%;
+            max-width:650px;
+            background:white;
+            padding:40px;
+            border-radius:18px;
+            box-shadow:0 12px 40px rgba(0,0,0,0.12);
+            text-align:center;
+        }
+
+        .success-icon{
+            width:80px;
+            height:80px;
+            margin:0 auto 20px;
+            border-radius:50%;
+            background:#28a745;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:42px;
+        }
+
+        .success-card h1{
+            margin:0 0 10px;
+            font-size:34px;
+            color:#222;
+        }
+
+        .success-message{
+            color:#666;
+            font-size:17px;
+            margin-bottom:30px;
+        }
+
+        .booking-summary{
+            background:#f8f5ef;
+            padding:22px;
+            border-radius:12px;
+            text-align:left;
+            margin-bottom:30px;
+        }
+
+        .summary-row{
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            padding:12px 0;
+            border-bottom:1px solid #ddd;
+            font-size:16px;
+        }
+
+        .summary-row:last-child{
+            border-bottom:none;
+        }
+
+        .summary-row strong{
+            text-align:right;
+            color:#222;
+        }
+
+        .paid{
+            color:#198754 !important;
+            font-weight:bold;
+        }
+
+        .success-btn{
+            display:inline-block;
+            padding:14px 30px;
+            background:#d4af37;
+            color:white;
+            text-decoration:none;
+            border-radius:30px;
+            font-weight:bold;
+            font-size:16px;
+            transition:0.3s;
+        }
+
+        .success-btn:hover{
+            background:#b8951f;
+            transform:translateY(-2px);
+        }
+
+        @media (max-width:600px){
+
+            .success-card{
+                padding:25px 18px;
+            }
+
+            .success-card h1{
+                font-size:28px;
+            }
+
+            .summary-row{
+                flex-direction:column;
+                gap:4px;
+            }
+
+            .summary-row strong{
+                text-align:left;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="success-page">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>
+            Booking Successful!
+        </h1>
+
+        <p class="success-message">
+            Your monument ticket has been booked successfully.
+        </p>
+
+
+        <div class="booking-summary">
+
+            <div class="summary-row">
+                <span>Booking ID</span>
+                <strong>BK{{ booking.id }}</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Monument</span>
+                <strong>
+                    {{ booking.monument.monument_name }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Visit Date</span>
+                <strong>
+                    {{ booking.visit_date|date:"M. d, Y" }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Adult Tickets</span>
+                <strong>
+                    {{ booking.adult_tickets }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Child Tickets</span>
+                <strong>
+                    {{ booking.child_tickets }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Total Paid</span>
+                <strong>
+                    ₹{{ booking.total_amount }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Payment Status</span>
+                <strong class="paid">
+                    Paid
+                </strong>
+            </div>
+
+        </div>
+
+
+        <a href="{% url 'monuments' %}"
+           class="success-btn">
+
+            Back to Monuments
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

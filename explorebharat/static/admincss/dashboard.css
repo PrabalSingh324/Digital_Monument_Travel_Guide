@@ -1,0 +1,744 @@
+/*EXPLORE BHARAT ADMIN PANEL
+                DASHBOARD CSS*/
+
+/*======================
+      ROOT VARIABLES
+======================*/
+
+:root{
+    --primary:#1f2a40;
+    --secondary:#8b5e3c;
+    --white:#ffffff;
+    --light:#f5f7fa;
+    --text:#2c3e50;
+    --gray:#64748b;
+    --border:#dcdcdc;
+    --danger:#dc3545;
+    --warning:#ffc107;
+
+    --shadow:0 5px 20px rgba(0,0,0,.08);
+    --shadow-hover:0 12px 25px rgba(0,0,0,.18);
+
+    --radius:15px;
+}
+
+/*======================
+      GLOBAL
+======================*/
+
+html{
+    scroll-behavior:smooth;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--light);
+    color:var(--text);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.content{
+    padding:30px;
+}
+
+h1,h2,h3{
+    color:var(--text);
+}
+
+/*======================
+      DASHBOARD CARDS
+======================*/
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.card{
+
+    background:var(--white);
+
+    border-radius:var(--radius);
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+    transition:all .3s ease;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+.card h3{
+
+    color:var(--gray);
+
+    margin-bottom:18px;
+
+    font-size:18px;
+
+}
+
+.card h1{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+}
+
+/*======================
+         FORMS
+======================*/
+
+.row{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+.input-box{
+
+    flex:1;
+
+}
+
+.input-box label{
+
+    display:block;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+
+    color:var(--text);
+
+}
+
+.input-box input,
+.input-box select,
+.input-box textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-size:16px;
+
+}
+
+.input-box textarea{
+
+    resize:vertical;
+
+}
+
+.input-box input:focus,
+.input-box select:focus,
+.input-box textarea:focus{
+
+    border-color:var(--primary);
+
+}
+
+/*======================
+       SAVE BUTTON
+======================*/
+
+.save-btn{
+
+    background:#2563eb;
+
+    color:var(--white);
+
+    border:none;
+
+    padding:14px 35px;
+
+    border-radius:8px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+.save-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/*======================
+          TABLE
+======================*/
+
+.table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:var(--white);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+.table th{
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    padding:15px;
+
+}
+
+.table td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.table img{
+
+    width:100px;
+
+    height:70px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+/*======================
+      EDIT / DELETE
+======================*/
+
+.edit-btn,
+.delete-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    margin:0 5px;
+
+    transition:all .3s ease;
+
+}
+
+.edit-btn{
+
+    background:var(--warning);
+
+    color:#000;
+
+}
+
+.edit-btn:hover{
+
+    background:#e0a800;
+
+    transform:scale(1.08);
+
+}
+
+.delete-btn{
+
+    background:var(--danger);
+
+    color:var(--white);
+
+}
+
+.delete-btn:hover{
+
+    background:#bb2d3b;
+
+    transform:scale(1.08);
+
+}
+
+/*======================
+   FEATURED CHECKBOX
+======================*/
+
+.featured-check{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:20px 0;
+
+}
+
+.featured-check input[type="checkbox"]{
+
+    width:22px !important;
+
+    height:22px !important;
+
+    margin:0 !important;
+
+    flex:none;
+
+}
+
+.featured-check label{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    margin:0;
+
+    cursor:pointer;
+
+}
+
+
+/*=========================================================
+            RECENT ACTIVITY
+=========================================================*/
+
+.recent-activity{
+
+    margin-top:40px;
+
+}
+
+.recent-activity h2{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+}
+
+.activity-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.activity-card{
+
+    background:var(--white);
+
+    padding:30px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+    transition:all .3s ease;
+
+}
+
+.activity-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+.activity-card i{
+
+    font-size:35px;
+
+    color:var(--secondary);
+
+    margin-bottom:18px;
+
+}
+
+.activity-card h3{
+
+    margin-bottom:10px;
+
+    color:var(--text);
+
+}
+
+.activity-card p{
+
+    color:var(--gray);
+
+    font-size:16px;
+
+}
+
+
+/*=========================================================
+                QUICK ACTIONS
+=========================================================*/
+
+.quick-actions{
+
+    margin-top:40px;
+
+}
+
+.quick-actions h2{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+}
+
+.action-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.action-btn{
+
+    background:var(--white);
+
+    border-radius:var(--radius);
+
+    padding:25px;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    text-align:center;
+
+    display:block;
+
+    box-shadow:var(--shadow);
+
+    transition:all .3s ease;
+
+}
+
+.action-btn i{
+
+    display:block;
+
+    font-size:35px;
+
+    color:var(--secondary);
+
+    margin-bottom:18px;
+
+}
+
+.action-btn span{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.action-btn:hover{
+
+    background:var(--secondary);
+
+    color:var(--white);
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+.action-btn:hover i,
+
+.action-btn:hover span{
+
+    color:var(--white);
+
+}
+
+
+/*=========================================================
+            RECENT MONUMENTS
+=========================================================*/
+
+.recent-monuments{
+
+    margin-top:40px;
+
+}
+
+.recent-monuments h2{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+}
+
+.recent-monuments img{
+
+    width:80px;
+
+    height:60px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+.recent-monuments .table tr:hover{
+
+    background:#f8fafc;
+
+}
+
+
+/*=========================================================
+              COMMON HOVER EFFECT
+=========================================================*/
+
+.card,
+.activity-card,
+.action-btn{
+
+    transition:all .3s ease;
+
+}
+
+.card:hover,
+.activity-card:hover,
+.action-btn:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+/*=========================================================
+                 RESPONSIVE
+=========================================================*/
+
+@media(max-width:1200px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.activity-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.content{
+
+padding:20px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.activity-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.action-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.row{
+
+flex-direction:column;
+
+}
+
+.table{
+
+display:block;
+
+overflow-x:auto;
+
+white-space:nowrap;
+
+}
+
+.card h1{
+
+font-size:34px;
+
+}
+
+}
+
+
+@media(max-width:480px){
+
+.content{
+
+padding:15px;
+
+}
+
+.card{
+
+padding:20px;
+
+}
+
+.activity-card{
+
+padding:20px;
+
+}
+
+.action-btn{
+
+padding:20px;
+
+}
+
+.card h1{
+
+font-size:30px;
+
+}
+
+.activity-card i,
+.action-btn i{
+
+font-size:30px;
+
+}
+
+.action-btn span{
+
+font-size:16px;
+
+}
+
+}
+
+
+/*=========================================================
+                  SCROLLBAR
+=========================================================*/
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:var(--secondary);
+
+border-radius:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#ececec;
+
+}
+
+
+/*=========================================================
+                  SELECTION
+=========================================================*/
+
+::selection{
+
+background:var(--secondary);
+
+color:var(--white);
+
+}
+
+

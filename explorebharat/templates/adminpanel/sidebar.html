@@ -1,0 +1,80 @@
+<div class="sidebar">
+
+    <div class="logo">
+
+        <h2>Explore Bharat</h2>
+        <p>Admin Panel</p>
+
+    </div>
+
+    <hr>
+
+    <ul class="menu">
+
+
+        <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+            <a href="{% url 'dashboard' %}"> <i class="fa-solid fa-house"></i>Dashboard</a>
+        </li>
+
+        <li class="{% if request.resolver_match.url_name == 'add_monument' %}active{% endif %}"> 
+            <a href="{% url 'add_monument' %}"><i class="fa-solid fa-plus"></i>Add Monument </a>
+        </li>
+
+        <li class="{% if request.resolver_match.url_name == 'view_monuments' %}active{% endif %}">
+            <a href="{% url 'view_monuments' %}">  <i class="fa-solid fa-landmark"></i> View Monument </a>
+        </li>
+        <li>
+            <a href="{% url 'view_bookings' %}">
+            <i class="fa-solid fa-ticket"></i>
+            Manage Bookings
+            </a>
+        </li>
+
+        
+        <li class="{% if request.resolver_match.url_name == 'add_gallery' %} active{% endif %}">
+             <a href="{% url 'add_gallery' %}">
+                 <i class="fa-solid fa-image"></i>
+                 Add Gallery
+             </a>
+        </li>
+
+         <li class="{% if request.resolver_match.url_name == 'view_gallery' %} active{% endif %}">
+            <a href="{% url 'view_gallery' %}">
+                <i class="fa-solid fa-images"></i>
+                View Gallery
+            </a>
+        </li>
+
+        
+        <li class="menu-title">
+            Other Management
+        </li>
+        
+
+        <li class="{% if request.resolver_match.url_name == 'contact_messages' %} active{% endif %}">
+            <a href="{% url 'contact_messages' %}">
+                <i class="fa-solid fa-envelope"></i>
+                Contact Messages
+            </a>
+        </li>
+        <li class="{% if request.resolver_match.url_name == 'registered_users' %} active{% endif %}">
+
+            <a href="{% url 'registered_users' %}">
+            <i class="fa-solid fa-users"></i>
+            Registered Users
+            </a>
+        </li>
+        <li class="{% if request.resolver_match.url_name == 'logout' %} active{% endif %}">
+            <a href="{% url 'logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li> 
+
+
+
+
+
+    </ul>
+
+</div>

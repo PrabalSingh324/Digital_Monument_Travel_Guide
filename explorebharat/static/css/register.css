@@ -1,0 +1,321 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+.top-bar{
+    width: 100%;
+    background: linear-gradient(90deg,#7A0000,#A00000,#7A0000);
+    color: white;
+    text-align: center;
+    padding: 18px 0;   
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #FFD700;
+}
+
+.top-bar p{
+    margin: 0;
+}
+/* .top-bar p{
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+} */
+.top-bar:hover{
+    color:yellow;
+
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    width:100%;
+    background:brown;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navdiv{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:65px;
+    height:65px;
+}
+
+.logo h2{
+    font-size:28px;
+    color:#fff;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+nav ul li{
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-size:16px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:yellow;
+}
+
+nav ul li a.active{
+    color:#FFD700;
+    border-bottom:2px solid #FFD700;
+    padding-bottom:5px;
+}
+
+/* ================= REGISTER SECTION ================= */
+
+.login-section{
+    width:100%;
+    min-height:100vh;
+    background:#f8f8f8;
+    padding:80px 8%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-container{
+    width:100%;
+    max-width:1300px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    background:#fff;
+    padding:60px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.login-left,
+.login-right{
+    flex:1;
+}
+
+.login-tag{
+    display:inline-block;
+    background:#D4AF37;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.login-left h1{
+    font-size:46px;
+    color:#5C4033;
+    margin-bottom:15px;
+}
+
+.login-left p{
+    color:#666;
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:28px;
+}
+
+.login-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-right img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:25px;
+}
+
+/* ================= REGISTER FORM ================= */
+
+.login-form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.login-form input{
+    width:100%;
+    padding:16px 18px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.login-form input:focus{
+    border-color:#8B4513;
+    box-shadow:0 0 8px rgba(139,69,19,.2);
+}
+
+/* Hide Edge password reveal button */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear{
+    display:none;
+}
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:50px;
+}
+
+.password-box i{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#777;
+    cursor:pointer;
+}
+
+.password-box i:hover{
+    color:#8B4513;
+}
+
+.gender-box{
+    display:flex;
+    gap:25px;
+    align-items:center;
+    margin:12px 0;
+}
+
+.gender-box label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    color:#555;
+}
+
+.gender-box input{
+    width:auto;
+}
+
+.terms-box{
+    margin:18px 0;
+}
+
+.terms-box label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    color:#555;
+}
+
+.terms-box input{
+    width:auto;
+}
+
+.login-form button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#8B4513;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-form button:hover{
+    background:#D4AF37;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.register-text{
+    margin-top:25px;
+    text-align:center;
+}
+
+.register-text a{
+    color:#8B4513;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register-text a:hover{
+    color:#D4AF37;
+}
+
+/* ================= FOOTER ================= */
+
+.login-footer{
+    padding:25px 8%;
+    background:#fff;
+    text-align:center;
+    border-top:1px solid #e5e5e5;
+}
+
+.login-footer p{
+    color:#666;
+    margin-bottom:10px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#8B4513;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.footer-links a:hover{
+    color:#D4AF37;
+}
+
+.footer-links span{
+    color:#999;
+}

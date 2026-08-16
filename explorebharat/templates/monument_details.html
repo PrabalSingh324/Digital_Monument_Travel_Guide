@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monument_Details</title>
+    <link rel="stylesheet" href="{% static 'css/monuments.css' %}">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-landmark"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+    
+
+
+    <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}" ><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}" class="active"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <section class="featured-monument">
+
+    <div class="featured-image">
+
+        <img src="{{ monument.monument_image.url }}" alt="{{ monument.monument_name }}">
+
+    </div>
+
+    <div class="featured-content">
+
+        <span class="featured-tag">
+            {{ monument.category }}
+        </span>
+
+        <h2>{{ monument.monument_name }}</h2>
+
+        <h4>
+            📍 {{ monument.city }}, {{ monument.state }}
+        </h4>
+
+        <p>
+            {{ monument.short_description }}
+        </p>
+
+        <div class="featured-info">
+
+    <span>🕘 {{ monument.opening_time }}</span>
+
+    <span>🕔 {{ monument.closing_time }}</span>
+
+    <span>🌤 {{ monument.best_time_to_visit }}</span>
+
+</div>
+
+<div class="entry-fee-box">
+
+    <h3>
+        <i class="fa-solid fa-ticket"></i>
+        Entry Fee
+    </h3>
+
+    <div class="fee-list">
+
+        <div>
+            <span>Adult</span>
+            <strong>₹{{ monument.adult_fee }}</strong>
+        </div>
+
+        <div>
+            <span>Child</span>
+            <strong>₹{{ monument.child_fee }}</strong>
+        </div>
+
+        <div>
+            <span>Foreign Tourist</span>
+            <strong>₹{{ monument.foreign_fee }}</strong>
+        </div>
+
+    </div>
+
+</div>
+
+        <a href="{{ monument.google_map }}"
+           target="_blank"
+           class="featured-btn">
+            View on Google Maps
+        </a>
+
+        <a href="{% url 'book_ticket' monument.id %}"
+   class="featured-btn booking-btn">
+
+    <i class="fa-solid fa-ticket"></i>
+    Book Ticket
+
+</a>
+
+    </div>
+
+</section>
+
+
+<section class="popular-monuments">
+
+    <div class="popular-heading">
+
+        <span>ABOUT</span>
+
+        <h2>Detailed History</h2>
+
+    </div>
+
+    <p style="line-height:2;font-size:18px;">
+        {{ monument.detailed_history }}
+    </p>
+
+</section>
+
+
+<section class="popular-monuments">
+
+    <div class="popular-heading">
+
+        <span>TRAVEL TIPS</span>
+
+        <h2>Travel Guide</h2>
+
+    </div>
+
+    <p style="line-height:2;font-size:18px;">
+        {{ monument.travel_tips }}
+    </p>
+
+</section>
+
+
+<section class="popular-monuments">
+
+    <div class="popular-heading">
+
+        <span>PHOTO GALLERY</span>
+
+        <h2>Gallery</h2>
+
+    </div>
+
+    <div class="monument-grid">
+
+        {% for i in gallery %}
+
+        <div class="monument-card">
+
+            <img src="{{ i.image.url }}" alt="">
+
+            <div class="card-content">
+
+                {% if i.caption %}
+                    <h3>{{ i.caption }}</h3>
+                {% else %}
+                    <h3>{{ monument.monument_name }}</h3>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <h2>No Gallery Images</h2>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<!--FOOTER-->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    
+</body>
+
+
+</html>

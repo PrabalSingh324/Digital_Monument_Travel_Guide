@@ -1,0 +1,204 @@
+
+<!-- CRUD :Create -->
+{% extends 'adminpanel/base.html' %}
+
+{% block body %}
+
+<div class="content">
+
+   <h1>Add Monument</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Monument Name</label>
+                <input type="text" name="monument_name">
+            </div>
+
+            <div class="input-box">
+                <label>Category</label>
+
+                <select name="category">
+
+                    <option>Select Category</option>
+                    <option>Fort</option>
+                    <option>Temple</option>
+                    <option>Mosque</option>
+                    <option>Palace</option>
+                    <option>Church</option>
+                    <option>Gurudwara</option>
+                    <option>Museum</option>
+                    <option>Cave</option>
+                    <option>Memorial</option>
+                    <option>Tomb</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>City</label>
+                <input type="text" name="city">
+            </div>
+        
+            <div class="input-box">
+                <label>State</label>
+                <input type="text" name="state">
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="input-box">
+                <label>Google Map Link</label>
+                <input type="url" name="google_map">
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Short Description</label>
+                <textarea rows="3"
+                name="short_description"></textarea>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Detailed History</label>
+                <textarea rows="6" name="detailed_history"></textarea>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Opening Time</label>
+                <input type="time" name="opening_time">
+            </div>
+
+            <div class="input-box">
+                <label>Closing Time</label>
+                <input type="time" name="closing_time">
+            </div>
+
+        </div>
+        <div class="row">
+
+    <div class="input-box">
+        <label>Adult Entry Fee (₹)</label>
+        <input type="number"
+               name="adult_fee"
+               min="0"
+               step="0.01"
+               placeholder="Example : 50">
+    </div>
+
+    <div class="input-box">
+        <label>Child Entry Fee (₹)</label>
+        <input type="number"
+               name="child_fee"
+               min="0"
+               step="0.01"
+               placeholder="Example : 20">
+    </div>
+
+        </div>
+        
+        <div class="row">
+        
+            <div class="input-box">
+                <label>Foreign Tourist Fee (₹)</label>
+                <input type="number"
+                       name="foreign_fee"
+                       min="0"
+                       step="0.01"
+                       placeholder="Example : 600">
+            </div>
+        
+        </div>
+        
+        <div class="row">
+
+            <div class="input-box">
+                <label>Best Time To Visit</label>
+                <input type="text" name="best_time_to_visit" placeholder="Example : October - March">
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Travel Tips</label>
+               <textarea rows="4" name="travel_tips"></textarea>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-box">
+                <label>Upload Monument Image</label>
+                <input type="file" name="monument_image">
+            </div>
+
+        <div class="row">
+
+    <div class="input-box">
+
+        <label>
+
+            <input type="checkbox" name="is_featured">
+
+            Set as Featured Monument
+
+        </label>
+
+    </div>
+
+</div>
+
+
+        </div>
+
+        <div class="row">
+
+            <button type="submit" class="save-btn">Save Monument</button>
+        </div>
+
+
+
+
+
+
+    </form>
+
+</div>
+
+{% if error == "no" %}
+
+<script>
+
+    alert("Monument Added Successfully!");
+
+    window.location="{% url 'add_monument' %}";
+
+</script>
+
+{% endif %}
+
+{% endblock %}

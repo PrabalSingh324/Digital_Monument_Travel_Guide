@@ -1,0 +1,393 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Monuments</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playwrite+NZ+Basic:wght@100..400&family=Playwrite+NZ:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-landmark"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+    <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                    <li><a href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+                   <li><a href="{% url 'admin_login' %}"> <i class="fa-solid fa-user-shield"></i> <span>Admin</span> </a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <!-- Stylish login and register -->
+        <div class="rhslogin">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+        <section class="herosection">
+
+            <div class="hero-overlay">
+
+                <h1>Explore India's Timeless Heritage</h1>
+
+                <p>
+                    Discover iconic monuments, rich architecture, and historical
+                    landmarks across India. Plan your journey with detailed travel
+                    information and stunning visuals.
+                </p>
+
+                <div class="hero-btns">
+                    <a href="{% url 'monuments' %}" class="btn">
+                        Explore Monuments
+                    </a>
+
+                    <a href="{% url 'gallery' %}" class="btn2">
+                        View Gallery
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+       
+
+        
+        <section class="feature_monuments" >
+            <div class="section-title">
+             <h2>Featured Monuments</h2>
+             <p>Explore India's most iconic historical landmarks and architectural masterpieces.</p>
+            </div>
+     
+            <div class="featured_container">
+
+                <article class="monument-card">
+
+                    <div class="image-box">
+                        <img src="{% static 'images/monuments/TajMahal_IMG.webp' %}" alt="Taj Mahal">
+                    </div>
+             
+                    <div class="content">
+
+                        <span class="tag">UNESCO Heritage</span>
+
+                        <h3>Taj Mahal</h3>
+
+                        <p class="location"> Agra, Uttar Pradesh</p>
+
+                        <p>
+                            One of the Seven Wonders of the World, admired for its timeless beauty.
+                        </p>
+                     
+                        <a href="#">View Details </a>
+                 
+                    </div>
+             
+                </article>
+         
+                <article class="monument-card">
+
+                    <div class="image-box">
+                        <img src="{% static 'images/monuments/Red_Fort_IMG.webp'%}" alt="Red Fort">
+                    </div>
+                 
+                    <div class="content">
+
+                        <span class="tag">Historic Fort</span>
+
+                        <h3>Red Fort</h3>
+
+                        <p class="location"> Delhi</p>
+
+                        <p>
+                            A magnificent Mughal fort symbolizing India's rich cultural heritage.
+                        </p>
+                     
+                        <a href="#">View Details </a>
+                     
+                    </div>
+             
+                </article>
+         
+                <article class="monument-card">
+
+                    <div class="image-box">
+                        <img src="{% static 'images/monuments/mysore-palace.jpg'%}" alt="Mysore Palace">
+                    </div>
+                
+                    <div class="content">
+                    
+                        <span class="tag">Royal Palace</span>
+                    
+                        <h3>Mysore Palace</h3>
+                    
+                        <p class="location">
+                            Mysuru, Karnataka
+                        </p>
+                    
+                        <p>
+                            One of India's most magnificent royal palaces, celebrated for its Indo-Saracenic architecture and dazzling illumination.
+                        </p>
+                    
+                        <a href="#">View Details →</a>
+                    
+                    </div>
+                
+                </article>
+                <article class="monument-card">
+
+                    <div class="image-box">
+                        <img src="{% static 'images/monuments/Hawa_Mahal_IMG.jpg'%}" alt="Hawa_Mahal_IMG">
+                    </div>
+                 
+                    <div class="content">
+
+                        <span class="tag">Royal Palace</span>
+
+                        <h3>Hawa Mahal</h3>
+
+                        <p class="location"> Jaipur, Rajasthan</p>
+
+                        <p>
+                            Famous for its unique honeycomb windows and royal Rajput architecture.
+                        </p>
+                     
+                        <a href="">View Details</a>
+                     
+                    </div>
+             
+                </article>
+         
+            </div>
+     
+        </section>
+
+        <section class="why-us">
+
+            <div class="section-title">
+                <h2>Why Choose Explore Bharat?</h2>
+                <p>
+                    Discover India's heritage with reliable information and an unforgettable travel experience.
+                </p>
+            </div>
+        
+            <div class="why-container">
+            
+                <div class="why-card">
+                
+                    <div class="icon">🏛</div>
+
+                        <h3>Authentic Information</h3>
+
+                        <p>
+                            Get accurate historical details about India's famous monuments.
+                        </p>
+
+                </div>
+
+                <div class="why-card">
+
+                        <div class="icon">📍</div>
+
+                        <h3>Easy Travel Guide</h3>
+
+                        <p>
+                            Find locations, timings and useful travel information in one place.
+                        </p>
+                
+                </div>
+            
+                <div class="why-card">
+                
+                        <div class="icon">📷</div>
+                
+                            <h3>HD Gallery</h3>
+                
+                            <p>
+                                Explore beautiful high-quality images of India's iconic landmarks.
+                            </p>
+                
+                </div>
+            
+                <div class="why-card">
+                
+                    <div class="icon">⏰</div>
+                
+                        <h3>Updated Details</h3
+                        <p>Access entry fees, opening hours and visitor information.</p>
+                            
+                
+                </div>
+            
+            </div>
+        
+        </section>
+
+        <!--GALLERY SECTION-->
+
+        <section class="gallery-section">
+        
+            <div class="section-title">
+            
+                <h2>Heritage Gallery</h2>
+            
+                <p>
+                    Experience the timeless beauty of India's most iconic monuments.
+                </p>
+            
+            </div>
+        
+            <div class="gallery-container">
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/TajMahal_IMG.webp'%}" alt="Taj Mahal">
+                </div>
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/Red_Fort_IMG.webp'%}" alt="Red Fort">
+                </div>
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/Hawa_Mahal_IMG copy.jpg' %}" alt="Hawa Mahal">
+                </div>
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/mysore-palace.jpg'%}" alt="Mysore Palace">
+                </div>
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/IndiaGate.webp'%}" alt="India Gate">
+                </div>
+            
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/gateway-of-india-390768_640.jpg'%}" alt="Gateway of India">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/Victoria-Memorial-Hall-Kolkata-India-West-Bengal.webp'%}" alt="Victoria Memorial">
+                </div>      
+
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/the-Konark-Sun-Temple.jpg'%}" alt="Konark Sun TEmple" >
+                </div>      
+
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/sanchi-banner4.webp'%}" alt="Sanchi Stupa">
+                </div>  
+                   
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/Wall-centre-background-Amer-Palace-Sun-Gate.webp'%}" alt="Amer Fort">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="{% static 'images/gallery/Qutub_Minar_IMG.avif'%}" alt="Qutub Minar">
+                </div>
+            
+            </div>
+        
+            <div class="gallery-btn">
+            
+                <a href="{% url 'gallery' %}">View Full Gallery →</a>
+            
+            </div>
+        
+        </section>
+
+       
+    </main>
+    <!--FOOTER-->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+</body>
+</html>

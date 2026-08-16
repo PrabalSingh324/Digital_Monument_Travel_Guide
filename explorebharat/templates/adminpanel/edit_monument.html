@@ -1,0 +1,219 @@
+
+
+<!-- CRUD : Update -->
+{% extends 'adminpanel/base.html' %}
+
+{% block body %}
+
+<div class="content">
+
+   <h1>Add Monument</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Monument Name</label>
+                    <input type="text" name="monument_name" value="{{ monument.monument_name }}">
+                </div>
+
+                <div class="input-box">
+                    <label>Category</label>
+
+                    <select name="category">
+
+                        <option {% if monument.category == "Select Category" %}selected{% endif %}>Select Category</option>
+
+                        <option {% if monument.category == "Fort" %}selected{% endif %}>Fort</option>
+
+                        <option {% if monument.category == "Temple" %}selected{% endif %}>Temple</option>
+
+                        <option {% if monument.category == "Mosque" %}selected{% endif %}>Mosque</option>
+
+                        <option {% if monument.category == "Palace" %}selected{% endif %}>Palace</option>
+
+                        <option {% if monument.category == "Church" %}selected{% endif %}>Church</option>
+
+                        <option {% if monument.category == "Gurudwara" %}selected{% endif %}>Gurudwara</option>
+
+                        <option {% if monument.category == "Museum" %}selected{% endif %}>Museum</option>
+
+                        <option {% if monument.category == "Cave" %}selected{% endif %}>Cave</option>
+
+                        <option {% if monument.category == "Memorial" %}selected{% endif %}>Memorial</option>
+
+                        <option {% if monument.category == "Tomb" %}selected{% endif %}>Tomb</option>
+
+                        <option {% if monument.category == "Other" %}selected{% endif %}>Other</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>City</label>
+                    <input type="text" name="city" value="{{ monument.city }}">
+                </div>
+
+                <div class="input-box">
+                    <label>State</label>
+                    <input type="text" name="state" value="{{ monument.state }}">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Google Map Link</label>
+                    <input type="url" name="google_map" value="{{ monument.google_map }}">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Short Description</label>
+                    <textarea rows="3" name="short_description">{{ monument.short_description }}</textarea>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Detailed History</label>
+                    <textarea rows="6" name="detailed_history">{{ monument.detailed_history }}</textarea>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Opening Time</label>
+                    <input type="time" name="opening_time" value="{{ monument.opening_time }}">
+                </div>
+
+                <div class="input-box">
+                    <label>Closing Time</label>
+                    <input type="time" name="closing_time" value="{{ monument.closing_time }}">
+                </div>
+
+            </div>
+            <div class="row">
+
+    <div class="input-box">
+        <label>Adult Entry Fee (₹)</label>
+        <input type="number"
+               name="adult_fee"
+               min="0"
+               step="0.01"
+               value="{{ monument.adult_fee }}"
+               placeholder="Example : 50">
+    </div>
+
+    <div class="input-box">
+        <label>Child Entry Fee (₹)</label>
+        <input type="number"
+               name="child_fee"
+               min="0"
+               step="0.01"
+               value="{{ monument.child_fee }}"
+               placeholder="Example : 20">
+    </div>
+
+    </div>
+    
+    <div class="row">
+    
+        <div class="input-box">
+            <label>Foreign Tourist Fee (₹)</label>
+            <input type="number"
+                   name="foreign_fee"
+                   min="0"
+                   step="0.01"
+                   value="{{ monument.foreign_fee }}"
+                   placeholder="Example : 600">
+        </div>
+    
+    </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Best Time To Visit</label>
+                    <input type="text" name="best_time_to_visit" value="{{ monument.best_time_to_visit }}">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+                    <label>Travel Tips</label>
+                    <textarea rows="4" name="travel_tips">{{ monument.travel_tips }}</textarea>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+    <div class="input-box">
+
+        <label>Current Image</label><br>
+
+        <img src="{{ monument.monument_image.url }}" width="180" style="margin-bottom:15px; border-radius:8px;">
+
+        <div class="featured-check">
+
+            <input type="checkbox" id="featured" name="is_featured" {% if monument.is_featured %}checked{% endif %}>
+
+            <label for="featured">Set as Featured Monument</label>
+
+        </div>
+
+        <br>
+
+        <label>Change Image (Optional)</label>
+
+        <input type="file" name="monument_image">
+
+    </div>
+
+</div>
+
+
+
+            <div class="row">
+
+                <button type="submit" class="save-btn">
+                    Update Monument
+                </button>
+
+            </div>
+
+    </form>
+
+</div>
+
+{% if error == "no" %}
+
+<script>
+
+    alert("Monument Added Successfully!");
+
+    window.location="{% url 'add_monument' %}";
+
+</script>
+
+{% endif %}
+
+{% endblock %}

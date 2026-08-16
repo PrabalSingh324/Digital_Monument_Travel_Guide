@@ -1,0 +1,332 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Payment | Explore Bharat</title>
+
+    <link rel="stylesheet" href="{% static 'css/monuments.css' %}">
+
+    <!-- Load Razorpay before page interaction -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+
+        .payment-container{
+            max-width:700px;
+            margin:60px auto;
+            padding:35px;
+            background:#ffffff;
+            border-radius:18px;
+            box-shadow:0 10px 35px rgba(0,0,0,0.10);
+        }
+
+        .payment-container h1{
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        .payment-container p{
+            text-align:center;
+            color:#666;
+        }
+
+        .booking-summary{
+            margin:30px 0;
+            padding:20px;
+            background:#f8f5ef;
+            border-radius:12px;
+        }
+
+        .summary-row{
+            display:flex;
+            justify-content:space-between;
+            padding:10px 0;
+            border-bottom:1px solid #ddd;
+        }
+
+        .summary-row:last-child{
+            border-bottom:none;
+        }
+
+        .total{
+            font-size:22px;
+            font-weight:bold;
+            color:#8b5e3c;
+        }
+
+        #rzp-button1{
+
+            width:100%;
+            padding:15px;
+
+            border:none;
+            border-radius:8px;
+
+            background:#d4af37;
+            color:white;
+
+            font-size:18px;
+            font-weight:bold;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        #rzp-button1:hover{
+
+            background:#b8951f;
+
+            transform:translateY(-1px);
+
+        }
+
+        #rzp-button1:disabled{
+
+            opacity:0.6;
+            cursor:not-allowed;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="top-bar">
+
+        <p>
+            <i class="fa-solid fa-landmark"></i>
+            DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE
+        </p>
+
+    </div>
+
+
+    <div class="payment-container">
+
+        <h1>Complete Your Payment</h1>
+
+        <p>
+            Secure payment for your monument booking
+        </p>
+
+
+        <div class="booking-summary">
+
+            <div class="summary-row">
+                <span>Monument</span>
+                <strong>{{ monument.monument_name }}</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Visit Date</span>
+                <strong>{{ booking.visit_date }}</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Adult Tickets</span>
+                <strong>{{ booking.adult_tickets }}</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Child Tickets</span>
+                <strong>{{ booking.child_tickets }}</strong>
+            </div>
+
+            <div class="summary-row">
+
+                <span>Total Amount</span>
+
+                <strong class="total">
+                    ₹{{ booking.total_amount }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="rzp-button1">
+
+            Proceed to Razorpay Payment
+
+        </button>
+
+    </div>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const payButton =
+                document.getElementById("rzp-button1");
+
+            if (!payButton) {
+
+                console.error("Razorpay button not found.");
+
+                return;
+
+            }
+
+
+            if (typeof Razorpay === "undefined") {
+
+                console.error(
+                    "Razorpay checkout.js failed to load."
+                );
+
+                payButton.disabled = true;
+
+                alert(
+                    "Razorpay payment system could not be loaded. Please refresh the page."
+                );
+
+                return;
+
+            }
+
+
+            const options = {
+
+                key: "{{ razorpay_key_id }}",
+
+                amount: "{{ amount }}",
+
+                currency: "INR",
+
+                name: "Explore Bharat",
+
+                description: "Monument Ticket Booking",
+
+                order_id: "{{ razorpay_order_id }}",
+
+                prefill: {
+
+                    name: "{{ user.fullname }}",
+
+                    email: "{{ user.email }}",
+
+                    contact: "+91{{ user.phone }}"
+
+                },
+
+                theme: {
+
+                    color: "#d4af37"
+
+                },
+
+
+                // handler: function (response) {
+
+                //     window.location.href =
+                //         "{% url 'payment_success' %}" +
+                //         "?booking_id={{ booking.id }}" +
+                //         "&payment_id=" +
+                //         encodeURIComponent(
+                //             response.razorpay_payment_id
+                //         ) +
+                //         "&order_id=" +
+                //         encodeURIComponent(
+                //             response.razorpay_order_id
+                //         ) +
+                //         "&signature=" +
+                //         encodeURIComponent(
+                //             response.razorpay_signature
+                //         );
+
+                // }
+                handler: function (response) {
+
+    alert("PAYMENT SUCCESS");
+
+    console.log("Payment ID:", response.razorpay_payment_id);
+    console.log("Order ID:", response.razorpay_order_id);
+    console.log("Signature:", response.razorpay_signature);
+
+    window.location.href =
+        "{% url 'payment_success' %}" +
+        "?booking_id={{ booking.id }}" +
+        "&payment_id=" +
+        encodeURIComponent(response.razorpay_payment_id) +
+        "&signature=" +
+        encodeURIComponent(response.razorpay_signature);
+}
+
+            };
+
+
+            console.log(
+                "Razorpay Key:",
+                options.key
+            );
+
+            console.log(
+                "Razorpay Order:",
+                options.order_id
+            );
+
+            console.log(
+                "Razorpay Amount:",
+                options.amount
+            );
+
+
+            const razorpay =
+                new Razorpay(options);
+
+
+            razorpay.on(
+                "payment.failed",
+                function (response) {
+
+                    console.error(
+                        "Payment Failed:",
+                        response.error
+                    );
+
+                    alert(
+                        "Payment failed: " +
+                        response.error.description
+                    );
+
+                }
+            );
+
+
+            payButton.addEventListener(
+                "click",
+                function () {
+
+                    console.log(
+                        "Opening Razorpay..."
+                    );
+
+                    razorpay.open();
+
+                }
+            );
+
+        });
+
+    </script>
+
+</body>
+
+</html>

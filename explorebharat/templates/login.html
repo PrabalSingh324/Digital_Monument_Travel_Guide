@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Explore Bharat</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-arrow-right-to-bracket"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+     <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}" ><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}" ><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}" ><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <!--LOGIN SECTION-->
+
+    <section class="login-section">
+
+        <div class="login-container">
+
+            <!-- Left Side -->
+
+            <div class="login-left">
+
+                <span class="login-tag">
+                    WELCOME BACK
+                </span>
+
+                <h1>Login To Explore Bharat</h1>
+
+                <p>
+                    Continue your journey through India's incredible
+                    heritage and monuments.
+                </p>
+
+                <form class="login-form"  action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+
+                    <input
+                        type="email"
+                        placeholder="Email Address"
+                        required name="email" >
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            required name="password">
+
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                    </div>
+
+                    <div class="login-options">
+
+                        <label>
+
+                            <input type="checkbox" name="remember">
+
+                            Remember Me
+
+                        </label>
+
+                        <a href="{% url 'forgot_password' %}">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+                    <button type="submit" name="login_btn">
+                        Login
+                    </button>
+
+                </form>
+
+                <p class="register-text">
+
+                    Don't have an account?
+
+                    <a href="{% url 'register' %}">
+                        Register Now
+                    </a>
+
+                </p>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="login-right">
+
+                <img src="{% static 'images/login/Victoria-Memorial-Hall-Kolkata-India-West-Bengal.webp'%}" alt="Login">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    
+   <!-- footer -->
+    <footer class="login-footer">
+
+        <p>
+            &copy; 2026 Explore Bharat. All Rights Reserved.
+        </p>
+
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Terms & Conditions</a>
+            <span>|</span>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+    </footer>
+
+
+
+   <script>
+
+        const password = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+
+        togglePassword.addEventListener("click", function(){
+
+            if(password.type === "password"){
+
+                password.type = "text";
+
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+
+            }else{
+
+                password.type = "password";
+
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+
+            }
+
+        });
+
+    </script>
+   
+
+{% if error == "no" %}
+<script>
+    alert("Login Successful!");
+    window.location="{% url 'home' %}";
+</script>
+{% endif %}
+
+</body>
+</html>

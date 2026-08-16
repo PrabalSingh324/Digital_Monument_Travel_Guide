@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body>
+    <div class="top-bar">
+        <p><i class="fa-solid fa-image"></i> DIGITAL MONUMENT & ARCHITECTURE TRAVEL GUIDE</p>
+    </div>
+        <header>
+        <div class="navdiv">
+
+            <div class="logo">
+                <img src="https://nma.gov.in/assets/images/emblemb2.png" alt="Logo">
+                <h2>Explore Bharat</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}" ><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="{% url 'monuments' %}"><i class="fa-solid fa-landmark"></i> Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}"  class="active"><i class="fa-solid fa-image"></i> Gallery</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="gallery-hero" >
+
+        <div class="gallery-overlay">
+
+            <span class="gallery-tag">EXPLORE INDIA THROUGH IMAGES</span>
+
+            <h1>Discover India's Architectural Beauty</h1>
+
+            <p>
+                Explore breathtaking photographs of India's most iconic monuments,
+                forts, palaces, temples and UNESCO World Heritage Sites.
+            </p>
+
+            <
+            <!-- browser #gallery-section naam ki id ko dhundhega aur usi section tak scroll kar dega. -->
+            <a href="#gallery-section" class="gallery-btn">
+                View Gallery →
+            </a>
+
+        </div>
+
+    </section>
+    <!--  GALLERY HEADING  -->
+    <section class="gallery-section" id="gallery-section">
+
+        <div class="gallery-heading">
+
+            <span>OUR COLLECTION</span>
+
+            <h2>Explore Beautiful Moments</h2>
+
+            <p>
+                Browse stunning photographs of India's most iconic
+                monuments captured from different parts of the country.
+            </p>
+
+        </div>
+
+    </section>
+
+    <div class="gallery-search">
+
+        <input type="text" id="searchInput" placeholder="Search monuments...">
+
+    </div>
+
+
+    <!-- GALLERY FILTER -->
+
+    <div class="gallery-filter">
+
+        <button class="filter-btn active" data-filter="all">All</button>
+
+        <button class="filter-btn" data-filter="unesco">UNESCO</button>
+
+        <button class="filter-btn" data-filter="fort">Forts</button>
+
+        <button class="filter-btn" data-filter="palace">Palaces</button>
+
+        <button class="filter-btn" data-filter="temple">Temples</button>
+
+        <button class="filter-btn" data-filter="memorial">Memorials</button>
+
+    </div>
+
+    <div class="gallery-grid">
+
+    {% for i in gallery %}
+
+    <div class="gallery-card">
+
+        <img src="{{ i.image.url }}" alt="{{ i.monument.monument_name }}">
+
+        <div class="gallery-overlay-card">
+
+            <h3>{{ i.monument.monument_name }}</h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                {{ i.monument.city }}, {{ i.monument.state }}
+            </p>
+
+            {% if i.caption %}
+            <p>{{ i.caption }}</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <h2 style="text-align:center;">
+        No Gallery Images Available
+    </h2>
+
+    {% endfor %}
+
+    </div>
+
+    
+
+    <!-- CTA SECTION -->
+
+    <section class="gallery-cta">
+
+        <span>DISCOVER INDIA</span>
+
+        <h2>Every Monument Has A Story</h2>
+
+        <p>
+            From magnificent forts to timeless temples, every destination reflects
+            India's glorious history and cultural heritage. Start your journey today.
+        </p>
+
+        <a href="{% url 'monuments' %}" class="gallery-cta-btn">
+            Explore Monuments →
+        </a>
+
+    </section>
+
+    <!-- Footer -->
+<footer>
+
+        <div class="footer-container">
+
+            <!-- About -->
+            <div class="footer-box">
+
+                <h2>Explore Bharat</h2>
+
+                <p>
+                    Explore India's rich heritage, magnificent monuments,
+                    and timeless architecture. Discover history, culture,
+                    and unforgettable travel experiences.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'monuments' %}">Monuments</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <!-- Popular Attractions -->
+            <div class="footer-box">
+
+                <h3>Popular Attractions</h3>
+
+                <ul>
+                    <li>India Gate</li>
+                    <li>Gateway of India</li>
+                    <li>Amer Fort</li>
+                    <li>Konark Sun Temple</li>
+                    <li>Victoria Memorial</li>
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p>📍 New Delhi, India</p>
+
+                <p>📧 info@explorebharat.com</p>
+
+                <p>📞 +91 98765 43210</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Explore Bharat | All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    
+
+
+
+        
+
+   
+    <script src="{% static 'js/gallery.js' %}"></script>
+</body>
+</html>
