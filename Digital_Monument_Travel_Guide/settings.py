@@ -49,6 +49,17 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-local-development-key")
+
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+    if host.strip()
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -166,3 +177,7 @@ EMAIL_HOST_USER = os.getenv("explorebharat.guide@gmail.com")
 EMAIL_HOST_PASSWORD =os.getenv("pnot jbri cbes uyog")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://digital-monument-travel-guide.onrender.com",
+]
