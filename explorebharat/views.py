@@ -6,6 +6,7 @@ from django.conf import settings
 from decimal import Decimal
 from django.views.decorators.cache import never_cache
 from django.core.mail import send_mail
+import traceback
 # Create your views here.
 
 def home(request):
@@ -631,33 +632,67 @@ def logout(request):
     return redirect("admin_login")
 
 
+# def dashboard(request):
+
+#     if not check_admin(request):
+#          return redirect("admin_login")
+
+#     monument_count = Monument.objects.count()
+#     gallery_count = Gallery.objects.count()
+#     contact_count = Contact.objects.count()
+#     user_count = Register.objects.count()
+#     latest_monument = Monument.objects.order_by("-id").first()
+#     latest_user = Register.objects.order_by("-id").first()
+#     latest_contact = Contact.objects.order_by("-id").first()
+#     recent_monuments = Monument.objects.order_by("-id")[:5]
+#     d = {
+#     "monument_count": monument_count,
+#     "gallery_count": gallery_count,
+#     "contact_count": contact_count,
+#     "user_count": user_count,
+
+#     "latest_monument": latest_monument,
+#     "latest_user": latest_user,
+#     "latest_contact": latest_contact,
+#     "recent_monuments": recent_monuments,
+#     }
+
+#     return render(request, "adminpanel/dashboard.html", d)
 def dashboard(request):
-
     if not check_admin(request):
-         return redirect("admin_login")
+        return redirect("admin_login")
 
-    monument_count = Monument.objects.count()
-    gallery_count = Gallery.objects.count()
-    contact_count = Contact.objects.count()
-    user_count = Register.objects.count()
-    latest_monument = Monument.objects.order_by("-id").first()
-    latest_user = Register.objects.order_by("-id").first()
-    latest_contact = Contact.objects.order_by("-id").first()
-    recent_monuments = Monument.objects.order_by("-id")[:5]
-    d = {
-    "monument_count": monument_count,
-    "gallery_count": gallery_count,
-    "contact_count": contact_count,
-    "user_count": user_count,
+    try:
+        monument_count = Monument.objects.count()
+        gallery_count = Gallery.objects.count()
+        contact_count = Contact.objects.count()
+        user_count = Register.objects.count()
 
-    "latest_monument": latest_monument,
-    "latest_user": latest_user,
-    "latest_contact": latest_contact,
-    "recent_monuments": recent_monuments,
-    }
+        latest_monument = Monument.objects.order_by("-id").first()
+        latest_user = Register.objects.order_by("-id").first()
+        latest_contact = Contact.objects.order_by("-id").first()
 
-    return render(request, "adminpanel/dashboard.html", d)
+        recent_monuments = Monument.objects.order_by("-id")[:5]
 
+        d = {
+            "monument_count": monument_count,
+            "gallery_count": gallery_count,
+            "contact_count": contact_count,
+            "user_count": user_count,
+            "latest_monument": latest_monument,
+            "latest_user": latest_user,
+            "latest_contact": latest_contact,
+            "recent_monuments": recent_monuments,
+        }
+
+        return render(request, "adminpanel/dashboard.html", d)
+
+    except Exception as e:
+        print("========== DASHBOARD ERROR ==========")
+        traceback.print_exc()
+        print("ERROR:", str(e))
+        print("=====================================")
+        raise
 
 def admin_login(request):
 
