@@ -150,41 +150,40 @@
 
         <tbody>
 
-            {% for monument in recent_monuments %}
+    {% for monument in recent_monuments %}
 
-            <tr>
+    <tr>
 
-                <td>
+        <td>
+            {% if monument.monument_image %}
+                <img
+                    src="{{ monument.monument_image.url }}"
+                    width="80"
+                    alt="{{ monument.monument_name }}"
+                >
+            {% else %}
+                <span>No Image</span>
+            {% endif %}
+        </td>
 
-                    <img src="{{ monument.monument_image.url }}" width="80">
+        <td>{{ monument.monument_name }}</td>
+        <td>{{ monument.city }}</td>
+        <td>{{ monument.state }}</td>
+        <td>{{ monument.category }}</td>
 
-                </td>
+    </tr>
 
-                <td>{{ monument.monument_name }}</td>
+    {% empty %}
 
-                <td>{{ monument.city }}</td>
+    <tr>
+        <td colspan="5">
+            No Monument Added Yet.
+        </td>
+    </tr>
 
-                <td>{{ monument.state }}</td>
+    {% endfor %}
 
-                <td>{{ monument.category }}</td>
-
-            </tr>
-
-            {% empty %}
-
-            <tr>
-
-                <td colspan="5">
-
-                    No Monument Added Yet.
-
-                </td>
-
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
+</tbody>
 
     </table>
 
